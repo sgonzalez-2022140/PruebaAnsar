@@ -3,6 +3,8 @@ import styled, { keyframes } from 'styled-components';
 import { FaWhatsapp, FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaHandsHelping, FaBoxOpen, FaDonate, FaPhone } from 'react-icons/fa'; // Añadimos íconos de colaboración
 import Banner from '../../assets/Niños.png';
 import BannerCompu from '../../assets/NiñosResolu2.png';
+import Kids from '../../assets/Kids.json'
+import { useLottie } from "lottie-react";
 
 // Animación para la aparición de la imagen
 const fadeIn = keyframes`
@@ -15,6 +17,19 @@ const fadeIn = keyframes`
     transform: scale(1);
   }
 `;
+
+// Configuración del Lottie
+const lottieOptions = {
+  animationData: Kids,
+  loop: true,
+  autoplay: true,
+};
+
+const LottieWrapper = styled.div`
+  max-width: 400px;
+  margin: 0 auto;
+`;
+
 
 // Animación para resaltar el botón con un borde blanco
 const highlightBorder = keyframes`
@@ -245,18 +260,60 @@ const ColaborateOptions = styled.div`
   gap: 30px;
 `;
 
+/* Solo para texto especicando que somos*/
+const TitleSection = styled.div`
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+  padding: 20px 0;
+`;
+
+const TitleText = styled.h1`
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  color: #ffffff; /* Color blanco */
+  line-height: 1.2;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
+`;
 export const HomePrincipal = () => {
+  const { View: LottieComponent } = useLottie(lottieOptions);
+  
   return (
     <MainContainer>
       {/* Sección con fondo de colores y la imagen */}
       <BannerSection>
         <BannerWrapper>
-          <BannerImage 
-            src={BannerCompu}
-            alt="Banner con niños" 
-          />
+          <BannerImage src={BannerCompu} alt="Banner con niños" />
         </BannerWrapper>
       </BannerSection>
+
+      {/* Sección de título justo debajo del banner */}
+      <TitleSection>
+        <TitleText>Ayudando a niños con desnutrición</TitleText>
+      </TitleSection>
+
+      
+      {/* Sección de información sobre la organización con Lottie */}
+      <InfoSection>
+        <InfoTitle>Asociación Amigos de Nueva Santa Rosa</InfoTitle>
+        <LottieWrapper>{LottieComponent}</LottieWrapper> {/* Aquí se renderiza el componente de Lottie */}
+        <InfoText>
+          Hace 2 años estamos comprometidos a ayudar a niños con desnutrición mediante un programa anual que les proporciona víveres y chequeos médicos. Nos dedicamos a mejorar la calidad de vida de los niños más vulnerables en las comunidades de Nueva Santa Rosa, Guatemala.
+        </InfoText>
+      </InfoSection>
+
+
       <ColaborateSection>
         <ColaborateTitle>¿Cómo puedes colaborar?</ColaborateTitle>
         <ColaborateOptions>
@@ -278,7 +335,7 @@ export const HomePrincipal = () => {
             <IconWrapper>
               <FaDonate />
             </IconWrapper>
-            <ColaborateText>Donaciones monetarias a la cuenta ANSAR</ColaborateText>
+            <ColaborateText>Donaciones a la cuenta monetaria 3080046231 ANSAR (Banrural)</ColaborateText>
           </ColaborateCard>
 
           <ColaborateCard>
