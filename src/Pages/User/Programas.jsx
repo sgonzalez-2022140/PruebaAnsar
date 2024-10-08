@@ -141,9 +141,9 @@ const ExplanationText = styled.div`
 `;
 
 const ExplanationTitle = styled.h2`
-  font-size: 2em;
+  font-size: 1.8rem;
   font-weight: bold;
-  
+  padding: 5px;
   @media (max-width: 768px) {
     font-size: 1.8em;
   }
@@ -254,22 +254,23 @@ export const Programas = () => {
       </InfoContainer>
 
       <center><ExplanationTitle>Características del programa</ExplanationTitle></center> {/* Título añadido */}
-      
+
       <CardContainer>
         <ProgramItem>
           <div>
-            <ProgramItemTitle>Chequeos médicos</ProgramItemTitle>
+            <ProgramItemTitle>Chequeos Médicos</ProgramItemTitle>
             <ProgramItemDescription>
-              Se brinda <strong>asistencia médica</strong> a los niños del programa para poder tratar sus problemas de salud de manera oportuna, asegurando un seguimiento continuo y ofreciendo tratamientos según sea necesario.
+              Ofrecemos <strong>chequeos médicos</strong> regulares para los niños del programa, con el objetivo de detectar y tratar de manera temprana cualquier problema de salud. Estos chequeos incluyen un seguimiento médico continuo para asegurar que los niños reciban el tratamiento adecuado. Nuestro equipo trabaja para garantizar que se atiendan las necesidades de cada niño, proporcionando atención médica oportuna y personalizada según sea necesario.
             </ProgramItemDescription>
           </div>
         </ProgramItem>
+
 
         <ProgramItem>
           <div>
             <ProgramItemTitle>Jornada Médica Anual</ProgramItemTitle>
             <ProgramItemDescription>
-              Organizamos <strong>jornadas médicas</strong> especializadas para brindar atención infantil a niños de 0 a 5 años en áreas rurales, asegurando un seguimiento médico adecuado y nutricional de forma gratuita.
+              Organizamos <strong>jornadas médicas</strong> anualmente en el mes de octubre con la colaboración de un equipo de médicos del <strong>País Vasco, España</strong>. En estas jornadas se brinda atención gratuita a más de 500 pacientes adultos y 250 niños, incluyendo consultas médicas, exámenes de laboratorio y medicamentos sin costo. Además, se identifican a niños en riesgo nutricional, quienes reciben seguimiento y apoyo con víveres y educación en salud para sus familias.
             </ProgramItemDescription>
           </div>
         </ProgramItem>
@@ -278,10 +279,11 @@ export const Programas = () => {
           <div>
             <ProgramItemTitle>Entrega de Víveres</ProgramItemTitle>
             <ProgramItemDescription>
-              Proporcionamos <strong>víveres y suplementos nutricionales</strong> a familias necesitadas, mejorando la nutrición infantil y garantizando la estabilidad alimentaria en las comunidades vulnerables.
+              Proporcionamos <strong>víveres y suplementos nutricionales</strong> a las familias más vulnerables. Estos recursos son fundamentales para mejorar la nutrición infantil y garantizar que los niños en riesgo de desnutrición puedan recuperarse adecuadamente. Además de la entrega de alimentos, ofrecemos educación sobre salud y nutrición a las familias, ayudándoles a mantener un estilo de vida saludable y a mejorar su calidad de vida a largo plazo.
             </ProgramItemDescription>
           </div>
         </ProgramItem>
+
       </CardContainer>
 
       <Footer>

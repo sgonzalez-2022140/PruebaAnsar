@@ -6,6 +6,8 @@ import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import Banrural from '../../assets/Banru.png'; // Imagen del banco
 import doctor from '../../assets/DOC.jpg';
 import Banner from '../../../public/act1.png'; // Imagen del banner
+import Grupo from '../../assets/Españoles.jpeg'; // Imagen del grupo
+import { Footer } from './Footer';
 
 // Contenedor principal
 const Container = styled.div`
@@ -115,6 +117,55 @@ const AboutText = styled.div`
   }
 `;
 
+// Estilo para la imagen del equipo
+
+const TeamImage = styled.img`
+  width: 100%; 
+  max-width: 600px; 
+  
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    width: 90%; 
+    margin: 10px auto; /* Reduce el margen en móviles */
+  }
+`;
+
+// Nueva sección para la imagen del grupo
+const GrupoSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  text-align: center;
+`;
+
+// Estilo para el texto "Nuestro equipo"
+const EquipoText = styled.h2`
+  margin-top: 20px;
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+`;
+
+// Línea decorativa
+const LineaDecorativa = styled.div`
+  width: 150px;
+  height: 4px;
+  background-color: #fcd12a;
+  margin: 10px auto;
+`;
+
+// Estilo para el texto "Jornada Anual 2023"
+const JornadaText = styled.h2`
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+`;
+
 // Estilo para la imagen del fundador
 const FounderImage = styled.img`
   border-radius: 10px;
@@ -123,14 +174,6 @@ const FounderImage = styled.img`
   height: auto;
 `;
 
-// Centrado del contenido del modal
-const ModalBodyStyled = styled(Modal.Body)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-`;
 
 // Sección de íconos y redirección
 const ContactSection = styled.div`
@@ -141,7 +184,7 @@ const ContactSection = styled.div`
   width: 90%;
   text-align: center;
   padding: 20px;
-  background-color: #f0f4f7; // Cambiar color de fondo
+  background-color: #f0f4f7;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   flex-wrap: wrap;
@@ -186,25 +229,22 @@ const CardDescription = styled.p`
   color: #555;
   text-align: center;
 `;
-
-// Modal para información de donación
+// Ajustes para el modal
 const DonationModal = ({ show, handleClose }) => {
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
-        <Modal.Title>Información de Donación</Modal.Title>
+        <Modal.Title style={{ textAlign: 'center', width: '100%' }}>Información de Donación</Modal.Title>
       </Modal.Header>
-      <ModalBodyStyled>
-        <img src={Banrural} alt="Banrural" style={{ width: '150px', marginBottom: '20px' }} /> {/* Imagen del banco */}
+      <Modal.Body style={{ textAlign: 'center' }}> {/* Centramos todo el contenido del modal */}
+        <img src={Banrural} alt="Banrural" style={{ width: '150px', marginBottom: '20px' }} />
         <p><strong>Banco:</strong> Banrural</p>
         <p><strong>Número de cuenta:</strong> 3080046231</p>
         <p><strong>Cuenta:</strong> Monetaria</p>
         <p><strong>Usuario:</strong> ANSAR</p>
-      </ModalBodyStyled>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Cerrar
-        </Button>
+      </Modal.Body>
+      <Modal.Footer style={{ justifyContent: 'center' }}> {/* Centramos los botones del modal */}
+        <Button variant="secondary" onClick={handleClose}>Cerrar</Button>
       </Modal.Footer>
     </Modal>
   );
@@ -218,8 +258,8 @@ export const QuienesSomos = () => {
   const handleShow = () => setShow(true);
 
   const goToContact = () => {
-    navigate('/contacto'); // Usar navigate para redirigir
-  };
+    navigate('/contacto')
+  }
 
   return (
     <Container>
@@ -230,9 +270,6 @@ export const QuienesSomos = () => {
         <ActionButton onClick={handleShow}>Contribuir ahora</ActionButton> {/* Botón que abre el modal */}
       </Header>
 
-      {/* Modal de información de donación */}
-      <DonationModal show={show} handleClose={handleClose} />
-
       {/* Sección "Sobre Nosotros" */}
       <AboutSection>
         <FounderImage src={doctor} alt="Dr. Carlos Herrera" />
@@ -240,9 +277,7 @@ export const QuienesSomos = () => {
           <h2>SOBRE NOSOTROS</h2>
           <p><strong>Dr. Carlos Herrera - Fundador y Director</strong></p>
           <p>
-          Somos una asociación dedicada a <strong>mejorar la vida de los niños</strong> a través de un programa
-          de ayuda. Nuestro equipo está comprometido con el bienestar de cada
-          niño que forma parte de las comunidades con las que trabajamos.
+            Somos una asociación dedicada a <strong>mejorar la vida de los niños</strong> a través de un programa de ayuda. Nuestro equipo está comprometido con el bienestar de cada niño que forma parte de las comunidades con las que trabajamos.
           </p>
           <p>
             Agradecemos a todos nuestros colaboradores y voluntarios que han sido parte esencial de esta misión. Su ayuda nos permite continuar brindando servicios de alimentación, educación y asistencia médica.
@@ -252,6 +287,14 @@ export const QuienesSomos = () => {
           </p>
         </AboutText>
       </AboutSection>
+
+      {/* Sección de "Nuestro equipo" */}
+      <GrupoSection>
+        <EquipoText>Nuestro equipo</EquipoText>
+        <LineaDecorativa />
+        <TeamImage src={Grupo} alt="Grupo de doctores" />
+        <JornadaText>Jornada anual 2023</JornadaText>
+      </GrupoSection>
 
       {/* Sección de contacto */}
       <ContactSection>
@@ -277,8 +320,17 @@ export const QuienesSomos = () => {
           </IconWrapper>
           <CardTitle>Visítanos</CardTitle>
           <CardDescription>Acércate a nuestra clinica para más información sobre cómo colaborar.</CardDescription>
-        </ContactCard>
-      </ContactSection>
+        </ContactCard>        
+      </ContactSection> 
+
+      {/* Modal de donación */}
+      <DonationModal show={show} handleClose={handleClose} />
+
+     
+
+
+      {/* Footer */}
+      <Footer />
     </Container>
   );
 };
