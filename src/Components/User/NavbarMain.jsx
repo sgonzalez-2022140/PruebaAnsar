@@ -30,6 +30,7 @@ const LogoText = styled.h1`
   color: white;
   font-size: 1.5rem;
   font-weight: 600;
+  padding-top: 0.5rem;
 `;
 
 const LinksContainer = styled.div`

@@ -57,6 +57,10 @@ const MenuIcon = styled.div`
   }
 `;
 
+const AnsarNav = styled.div`
+  
+`
+
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   color: inherit;
@@ -103,13 +107,7 @@ const DropdownMenu = styled.div`
   z-index: 1000;
 `;
 
-const DropdownItem = styled.div`
-  padding: 10px 20px;
-  cursor: pointer;
-  &:hover {
-    background-color: #f0f0f0;
-  }
-`;
+
 
 export const NabarAdmin = () => {
   const [open, setopen] = useState(false);

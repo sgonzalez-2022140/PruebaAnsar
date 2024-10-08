@@ -1,34 +1,165 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaUserMd, FaBoxOpen } from 'react-icons/fa'; // Iconos de jornadas y víveres
+import Header from '../../assets/Programas.jpg';
+import InfoPrograma from '../../assets/Program.png';
+import { FaWhatsapp, FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaHandsHelping, FaBoxOpen, FaDonate, FaPhone } from 'react-icons/fa'; // Añadimos íconos de colaboración
 
 const ProgramContainer = styled.div`
-  padding: 20px;
-  max-width: 900px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
 `;
 
-const ProgramTitle = styled.h1`
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #003366;
+// Ajuste para el diseño responsivo en móviles
+const InfoDiv = styled.div`
+  color: white;
+  width: 100%;
+  background-color: #1a73e8;
+  height: auto;
+  padding: 15px;
   text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 15px;
+    font-size: 1.1em;
+  }
+`;
+
+const ShapeCircle = styled.div`
+  width: 300px;
+  height: 300px;
+  background: #9b9a9a;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+
+  @media (max-width: 768px) {
+    margin: 0 auto 20px;
+  }
+`;
+
+// Imagen dentro del círculo
+const InfoImage = styled.img`
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
 `;
 
 const ProgramDescription = styled.p`
   font-size: 1.2em;
   line-height: 1.6;
-  margin-bottom: 30px;
   text-align: center;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 1em;
+  }
+
+  strong {
+    font-weight: bold;
+  }
 `;
 
+const HeaderContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)), url(${Header});
+  background-size: cover;
+  background-position: center;
+
+  @media (max-width: 768px) {
+    height: 300px;
+  }
+`;
+
+const CardContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  margin-bottom: 60px; /* Aumentamos el espacio debajo de las cards */
+`;
+
+const TextOverlay = styled.div`
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    bottom: 10px;
+  }
+`;
+
+const HeaderTitle = styled.h1`
+  font-size: 3em;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 2px;
+
+  @media (max-width: 768px) {
+    font-size: 2em;
+  }
+`;
+
+// Contenedor para alinear imagen a la izquierda y texto a la derecha
+const InfoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
+`;
+
+const ExplanationText = styled.div`
+  flex: 1;
+  font-size: 1.2em;
+  line-height: 1.6;
+  padding-left: 50px; /* Para pantallas grandes */
+  
+  @media (max-width: 768px) {
+    font-size: 1em;
+    text-align: center;
+    padding-left: 0; /* Quitar padding en pantallas pequeñas */
+  }
+
+  @media (min-width: 1200px) {
+    padding-left: 100px; /* Aumentar el padding para pantallas muy grandes */
+  }
+`;
+
+const ExplanationTitle = styled.h2`
+  font-size: 2em;
+  font-weight: bold;
+  
+  @media (max-width: 768px) {
+    font-size: 1.8em;
+  }
+`;
+
+// Lista de programas
 const ProgramList = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+  padding: 40px 20px;
 
-  @media (min-width: 768px) {
-    grid-template-columns: 1fr 1fr;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px 10px;
   }
 `;
 
@@ -36,6 +167,8 @@ const ProgramItem = styled.div`
   background-color: #f4f4f9;
   padding: 20px;
   border-radius: 10px;
+  width: 300px;
+  text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, background-color 0.3s ease;
 
@@ -45,56 +178,122 @@ const ProgramItem = styled.div`
   }
 `;
 
-const IconWrapper = styled.div`
-  font-size: 3em;
-  color: #005580;
-  margin-bottom: 10px;
-  text-align: center;
-`;
-
 const ProgramItemTitle = styled.h2`
-  font-size: 1.8em;
-  color: #005580;
+  font-size: 1.5em;
+  color: #1a73e8;
   margin-bottom: 10px;
-  text-align: center;
 `;
 
 const ProgramItemDescription = styled.p`
   font-size: 1.1em;
   line-height: 1.5;
   text-align: justify;
+  strong {
+    font-weight: bold;
+  }
+`;
+
+// Footer simple con información de contacto y redes sociales
+const Footer = styled.footer`
+  background-color: #0B8AD9;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  overflow-x: hidden;
+`;
+
+const FooterText = styled.p`
+  font-size: 1rem;
+  margin: 0;
+`;
+
+const SocialIcons = styled.div`
+  margin-top: 10px;
+  font-size: 1.5rem;
+
+  & > * {
+    margin: 0 10px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #FF4D4D;
+    }
+  }
 `;
 
 export const Programas = () => {
   return (
     <ProgramContainer>
-      <ProgramTitle>Programas Anuales</ProgramTitle>
+      <HeaderContainer>
+        <TextOverlay>
+          <HeaderTitle>Programas para los Niños</HeaderTitle>
+        </TextOverlay>
+      </HeaderContainer>
 
-      <ProgramDescription>
-        Nuestros programas están diseñados para brindar apoyo integral a las familias y niños que enfrentan situaciones de desnutrición. Cada año organizamos jornadas médicas especializadas y la entrega de víveres para garantizar el bienestar de los más vulnerables. A continuación, te presentamos nuestros programas principales:
-      </ProgramDescription>
+      <InfoDiv>
+        <ProgramDescription>
+          <strong>Nuestros programas</strong> están diseñados para brindar apoyo integral a las familias y niños que enfrentan situaciones de desnutrición. Organizamos jornadas médicas especializadas y entregamos víveres para garantizar el bienestar de los más vulnerables.
+        </ProgramDescription>
+      </InfoDiv>
 
-      <ProgramList>
+      <InfoContainer>
+        <ShapeCircle>
+          <InfoImage src={InfoPrograma} alt="Icono Info Programa" />
+        </ShapeCircle>
+
+        <ExplanationText>
+          <ExplanationTitle>¿Para qué sirve un programa?</ExplanationTitle>
+          Un programa tiene como objetivo estructurar un conjunto de actividades organizadas que se llevan a cabo con la intención de alcanzar una meta específica. En el caso de los programas que brindamos, nuestro enfoque es mejorar la nutrición y la salud infantil en áreas vulnerables, asegurando que los niños reciban el apoyo y tratamiento adecuado.
+        </ExplanationText>
+      </InfoContainer>
+
+      <center><ExplanationTitle>Características del programa</ExplanationTitle></center> {/* Título añadido */}
+      
+      <CardContainer>
         <ProgramItem>
-          <IconWrapper>
-            <FaUserMd />
-          </IconWrapper>
-          <ProgramItemTitle>Jornada Médica Anual</ProgramItemTitle>
-          <ProgramItemDescription>
-            Todos los años organizamos una jornada médica especializada en atención infantil para niños de 0 a 5 años. En la jornada, colaboran médicos especializados en nutrición y pediatría, quienes ayudan a prevenir la desnutrición y ofrecen a los niños un seguimiento médico adecuado. Estas jornadas tienen como objetivo principal brindar atención a niños de áreas rurales y asegurar que reciban el tratamiento necesario para su bienestar.
-          </ProgramItemDescription>
+          <div>
+            <ProgramItemTitle>Chequeos médicos</ProgramItemTitle>
+            <ProgramItemDescription>
+              Se brinda <strong>asistencia médica</strong> a los niños del programa para poder tratar sus problemas de salud de manera oportuna, asegurando un seguimiento continuo y ofreciendo tratamientos según sea necesario.
+            </ProgramItemDescription>
+          </div>
         </ProgramItem>
 
         <ProgramItem>
-          <IconWrapper>
-            <FaBoxOpen />
-          </IconWrapper>
-          <ProgramItemTitle>Entrega de Víveres</ProgramItemTitle>
-          <ProgramItemDescription>
-            Además de la atención médica, entregamos víveres y suplementos nutricionales a las familias más necesitadas de las aldeas cercanas. Nuestro objetivo es mejorar la nutrición infantil y ofrecerles un futuro mejor. Estos víveres incluyen alimentos ricos en nutrientes que son esenciales para el desarrollo saludable de los niños y la estabilidad alimentaria de sus familias.
-          </ProgramItemDescription>
+          <div>
+            <ProgramItemTitle>Jornada Médica Anual</ProgramItemTitle>
+            <ProgramItemDescription>
+              Organizamos <strong>jornadas médicas</strong> especializadas para brindar atención infantil a niños de 0 a 5 años en áreas rurales, asegurando un seguimiento médico adecuado y nutricional de forma gratuita.
+            </ProgramItemDescription>
+          </div>
         </ProgramItem>
-      </ProgramList>
+
+        <ProgramItem>
+          <div>
+            <ProgramItemTitle>Entrega de Víveres</ProgramItemTitle>
+            <ProgramItemDescription>
+              Proporcionamos <strong>víveres y suplementos nutricionales</strong> a familias necesitadas, mejorando la nutrición infantil y garantizando la estabilidad alimentaria en las comunidades vulnerables.
+            </ProgramItemDescription>
+          </div>
+        </ProgramItem>
+      </CardContainer>
+
+      <Footer>
+        <FooterText>© 2024 ANSAR - Todos los derechos reservados</FooterText>
+        <SocialIcons>
+          <FaFacebook />
+          <FaInstagram />
+          <FaTwitter />
+          <FaYoutube /> {/* Añadimos el ícono de YouTube */}
+        </SocialIcons>
+      </Footer>
+
     </ProgramContainer>
   );
 };

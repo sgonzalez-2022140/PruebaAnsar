@@ -351,7 +351,7 @@ export const HomePrincipal = () => {
       <InfoSection>
         <InfoTitle>Nuestra Misión</InfoTitle>
         <InfoText>
-          Somos un grupo de doctores comprometidos con el bienestar de los niños que sufren de desnutrición en la región de Nueva Santa Rosa, Guatemala. Con más de 2 años de experiencia, nos dedicamos a mejorar la calidad de vida de los niños a través de programas de atención médica y apoyo nutricional. Nuestro equipo está enfocado en brindar soluciones de salud que transformen el futuro de las comunidades con las que trabajamos.
+          Somos un grupo de doctores y personas de gran corazón comprometidos con el bienestar de los niños que sufren de desnutrición en la región de Nueva Santa Rosa, Guatemala. Con más de 2 años de experiencia, nos dedicamos a mejorar la calidad de vida de los niños a través de programas de atención médica y apoyo nutricional. Nuestro equipo está enfocado en brindar soluciones de salud que transformen el futuro de las comunidades con las que trabajamos.
         </InfoText>
       </InfoSection>
 
